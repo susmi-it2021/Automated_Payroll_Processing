@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>YellowBag - Hours calculation</title>
+    <link rel="icon" type="image/x-icon" href="../yellowbagside-svg.svg" />
+    <meta name="author" content="Codeconvey" />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.0.13/css/all.css'>
+    <style>
+    body {
+        background-color: #f1f1f2;
+    }
+    .tile {
+        width: 100%;
+        margin: 0px auto;
+    }
+    #tile-1 .nav-tabs {
+        position: relative;
+        border: none!important;
+        background-color: #fff;
+        border-radius: 6px;
+    }
+    #tile-1 .nav-tabs li {
+        margin: 0px!important;
+    }
+    #tile-1 .nav-tabs li a {
+        position: relative;
+        margin-right: 0px!important;
+        font-size: 16px;
+        border: none!important;
+        color: #007bff; /* blue color */
+        text-decoration: none; /* remove underline */
+    }
+    #tile-1 .nav-tabs a:hover {
+        color: #0056b3!important; /* darker blue on hover */
+    }
+    .home-icon {
+        position: relative;
+        top: 13px;
+        left: 2px;
+        z-index: 1000;
+        color: #333;
+        font-size: 24px;
+        text-decoration: none;
+        transition: all 0.3s; 
+    }
+    .home-icon:hover {
+        color: #39bcd3;
+    }
+    @media only screen and (max-width: 768px) {
+    #tile-1 .nav-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+        flex-direction: column;
+    }
+    #tile-1 .nav-tabs li {
+        width: auto;
+        margin: 5px;
+    }
+    #tile-1 .nav-tabs li a {
+        padding: 10px 15px!important;
+    }
+    }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tile" id="tile-1">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <a href="../dashboard.html" class="home-icon"><i class="fas fa-home"></i></a>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#import" onclick="loadContent('upload.php')"><i class="fas fa-upload"></i> Import</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#attendance" onclick="loadContent('attendance_search.php')"><i class="fas fa-id-card"></i> Inconsistency Spotlight</a>
+                            </li>
+                            <!-- New Re-import tab -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="#reimport" onclick="loadContent('reupload.php')"><i class="fas fa-redo"></i> Re-import</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#individual_working_and_late_hours" onclick="loadContent('attendance_search2.php')"><i class="fas fa-clock"></i>Individual working and late hours</a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="import" role="tabpanel" aria-labelledby="import-tab"></div>
+                            <div class="tab-pane fade" id="attendance" role="tabpanel" aria-labelledby="attendance-tab"></div>
+                            <!-- New Re-import tab content -->
+                            <div class="tab-pane fade" id="reimport" role="tabpanel" aria-labelledby="reimport-tab"></div>
+                            <div class="tab-pane fade" id="clean" role="tabpanel" aria-labelledby="clean-tab"></div>
+                        </div>
+                    </div>
+                    <!-- Scripts -->
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+                    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js'></script>
+                    <script>
+                        function loadContent(url) {
+                            $('.tab-pane').html(''); // Clear existing content
+                            $('.nav-link').removeClass('active'); // Remove active class from all links
+                            $.get(url, function(data) {
+                                $('.tab-pane').html(data); // Load content into corresponding tab
+                            });
+                        }
+
+                        // Load content of the first link upon page load
+                        $(document).ready(function() {
+                            loadContent('upload.php');
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Login Form</title>
+  <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins&amp;display=swap'>
+<link rel="icon" type="image/x-icon" href="yellowbagside-svg.svg" />
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+  <div class="login_box">
+    <div class="login-header">
+    </div>
+	<center><h1>ADMIN</h1></center>
+    <form action="login.php" method="POST">
+    <div class="input_box">
+      <input type="text" id="user" class="input-field" name="user" required>
+      <label for="user" class="label">Username</label>
+      <i class="bx bx-user icon"></i>
+    </div>
+
+    <div class="input_box">
+      <input type="password" id="pass" class="input-field" name="pass" required>
+      <label for="pass" class="label">Password</label>
+      <i class="bx bx-lock-alt icon"></i>
+    </div>
+
+    <div class="input_box">
+      <input type="submit" class="input-submit" value="Login">
+    </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
